@@ -79,7 +79,8 @@ function normalizeStoredUrl(value) {
         .replace(/\//g, '\\')
         .toLowerCase();
       if (localPath === 'd:\\tool\\dataset\\catalog\\index.html') {
-        return `${window.location.origin}/data-assets/index.html`;
+        const isLocalNavHost = ['quant-nav.localhost', 'localhost', '127.0.0.1'].includes(window.location.hostname);
+        return isLocalNavHost ? `${window.location.origin}/data-assets/index.html` : '';
       }
     }
     return ['http:', 'https:', 'file:'].includes(parsed.protocol) && (parsed.protocol !== 'file:' || !parsed.hostname)
@@ -254,6 +255,12 @@ function showToast(message) {
 function formatUrl(value) {
   const trimmed = value.trim();
   if (!trimmed) return '';
+  if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
+    return new URL(trimmed, window.location.href).href;
+  }
+  if (trimmed.startsWith('./')) {
+    return new URL(trimmed, window.location.href).href;
+  }
   const isLocalHost = /^(localhost|127(?:\.\d{1,3}){3}|\[::1\])(?::|\/|$)/i.test(trimmed);
   const isFileUrl = /^file:\/\/\//i.test(trimmed);
   if (/^[a-z][a-z0-9+.-]*:/i.test(trimmed) && !/^https?:\/\//i.test(trimmed) && !isFileUrl && !isLocalHost) {

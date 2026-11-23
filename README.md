@@ -12,15 +12,21 @@
 
 运行 `scripts/install-startup-task.ps1` 会创建并立即启动 Windows 登录任务。当前用户登录 Windows 后，任务会在后台启动网站服务，服务异常退出时任务会重试。使用 `http://quant-nav.localhost:8765/` 访问。用户登录后服务才会启动。
 
-## 以后绑定正式域名
-
-本地服务默认只监听 `127.0.0.1`，不会暴露到局域网或公网。数据资产目录通过 `/data-assets/` 路径提供，仅映射 `D:\tool\dataset\catalog`。服务器地址和端口可以通过 `QUANT_NAV_HOST` 与 `QUANT_NAV_PORT` 环境变量调整。正式部署时建议把服务放在公网主机的 HTTPS 反向代理之后，并将 `quant-nav.com` 的 DNS 指向该主机。注册域名和配置 DNS 后，导航入口的保存格式仍然可以直接使用正式 HTTPS 地址。
-
-`quant-nav.localhost` 是仅本机使用的别名。正式 `.com` 地址当前没有注册记录，尚未进行域名购买或公网 DNS 配置。
-
 - `scripts/status.ps1`：检查服务状态
 - `scripts/stop.ps1`：停止服务
 - `scripts/start.ps1`：立即启动服务
+
+## 以后绑定正式域名
+
+本地服务默认只监听 `127.0.0.1`，不会暴露到局域网或公网。通过忽略配置文件指定的数据资产目录可从 `/data-assets/` 提供。服务器地址和端口可以通过 `QUANT_NAV_HOST` 与 `QUANT_NAV_PORT` 环境变量调整。正式部署时建议把服务放在公网主机的 HTTPS 反向代理之后，并将 `quant-nav.com` 的 DNS 指向该主机。注册域名和配置 DNS 后，导航入口的保存格式仍然可以直接使用正式 HTTPS 地址。
+
+`quant-nav.localhost` 是仅本机使用的别名。正式 `.com` 地址当前没有注册记录，尚未进行域名购买或公网 DNS 配置。
+
+## GitHub Pages 部署
+
+仓库中的 GitHub Actions workflow 会在推送 `main` 后发布导航页面和架构图到 GitHub Pages。Pages 部署不会包含本机数据资产目录。公开站点上的数据资产入口需要填写一个对访问者可达的 HTTPS 地址。
+
+初次部署完成后，站点地址为 `https://52pig.github.io/quant-nav/`。
 
 ## 目录
 

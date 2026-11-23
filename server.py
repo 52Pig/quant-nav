@@ -4,11 +4,20 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from functools import partial
 from urllib.parse import unquote, urlsplit
+import json
 import os
 
 
 ROOT = Path(__file__).resolve().parent
-DATA_CATALOG = Path(r"D:\tool\dataset\catalog").resolve()
+LOCAL_CONFIG = ROOT / "quant-nav.local.json"
+try:
+    local_config = json.loads(LOCAL_CONFIG.read_text(encoding="utf-8"))
+except (OSError, json.JSONDecodeError):
+    local_config = {}
+
+DATA_CATALOG = Path(
+    os.environ.get("QUANT_NAV_DATA_CATALOG", local_config.get("data_catalog", ROOT / "data-assets"))
+).resolve()
 HOST = os.environ.get("QUANT_NAV_HOST", "127.0.0.1")
 PORT = int(os.environ.get("QUANT_NAV_PORT", "8765"))
 

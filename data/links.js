@@ -1,3 +1,5 @@
+const isLocalNavHost = ['quant-nav.localhost', 'localhost', '127.0.0.1'].includes(window.location.hostname);
+
 window.QUANT_NAV_ENTRIES = [
   {
     id: 'scheduler',
@@ -14,7 +16,7 @@ window.QUANT_NAV_ENTRIES = [
     name: '数据资产',
     category: '数据平台',
     description: '管理数据集、元数据与数据质量。',
-    url: 'http://quant-nav.localhost:8765/data-assets/index.html',
+    url: isLocalNavHost ? '/data-assets/index.html' : '',
     favorite: true,
     icon: 'database',
     tone: 'blue',
