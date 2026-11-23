@@ -60,32 +60,27 @@ function normalizeEntry(entry, index) {
     name: String(entry.name || '未命名入口'),
     category: String(entry.category || '未分类'),
     description: String(entry.description || ''),
-    url: normalizeStoredUrl(entry.url),
+    url: normalizeStoredUrl(entry.url, entry.id),
     favorite: Boolean(entry.favorite),
     icon: ICONS[entry.icon] ? entry.icon : 'grid',
     tone: ['green', 'amber', 'blue', 'violet'].includes(entry.tone) ? entry.tone : 'green',
   };
 }
 
-function normalizeStoredUrl(value) {
+function normalizeStoredUrl(value, entryId) {
   const url = String(value || '').trim();
   if (!url) return '';
   if (/^\.\/docs\/architecture\/[\w.-]+\.(svg|drawio)$/i.test(url)) return url;
   try {
     const parsed = new URL(url);
     if (parsed.protocol === 'file:') {
-      const localPath = decodeURIComponent(parsed.pathname)
-        .replace(/^\/([a-z]:)/i, '$1')
-        .replace(/\//g, '\\')
-        .toLowerCase();
-      if (localPath === 'd:\\tool\\dataset\\catalog\\index.html') {
-        const isLocalNavHost = ['quant-nav.localhost', 'localhost', '127.0.0.1'].includes(window.location.hostname);
-        return isLocalNavHost ? `${window.location.origin}/data-assets/index.html` : '';
+      const isLocalNavHost = ['quant-nav.localhost', 'localhost', '127.0.0.1'].includes(window.location.hostname);
+      if (entryId === 'data-assets' && isLocalNavHost) {
+        return `${window.location.origin}/data-assets/index.html`;
       }
+      return isLocalNavHost && !parsed.hostname ? parsed.href : '';
     }
-    return ['http:', 'https:', 'file:'].includes(parsed.protocol) && (parsed.protocol !== 'file:' || !parsed.hostname)
-      ? parsed.href
-      : '';
+    return ['http:', 'https:'].includes(parsed.protocol) ? parsed.href : '';
   } catch {
     return '';
   }
@@ -277,6 +272,9 @@ function formatUrl(value) {
   }
   if (!['http:', 'https:', 'file:'].includes(parsed.protocol) || (parsed.protocol === 'file:' && parsed.hostname)) {
     throw new Error('请输入有效的 http、https 或本地 file:/// 地址。');
+  }
+  if (parsed.protocol === 'file:' && !['quant-nav.localhost', 'localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    throw new Error('本地 file:/// 地址只能在本机导航页中使用。');
   }
   return parsed.href;
 }
