@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f6f3">
+    <meta name="description" content="Quant Nav：量化交易系统网站导航">
+    <title>quant-nav · 量化系统导航</title>
+    <link rel="stylesheet" href="./assets/app.css">
+    <script src="./data/links.js" defer></script>
+    <script src="./assets/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="关闭导航菜单"></button>
+
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="./index.html" aria-label="quant-nav 首页">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="brand-name">quant<span>-</span>nav</span>
+        </a>
+
+        <div class="sidebar-label">网站导航</div>
+        <nav class="primary-nav" aria-label="系统入口分类">
+          <button class="nav-link is-active" id="all-entries" type="button" data-category="全部入口">
+            <span class="nav-icon" data-icon="grid"></span>
+            <span>所有网站</span>
+            <span class="nav-count" id="all-count">0</span>
+          </button>
+          <div class="sidebar-label category-label">按分类浏览</div>
+          <div id="category-nav" class="category-nav"></div>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note-icon" data-icon="shield"></div>
+          <div>
+            <strong>本地保存</strong>
+            <span>入口地址保存在当前浏览器</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs">
+            <button class="mobile-menu-button" id="mobile-menu-button" type="button" aria-label="打开导航菜单">
+              <span data-icon="menu"></span>
+            </button>
+            <span class="breadcrumb-root">quant-nav</span>
+            <span class="breadcrumb-divider">/</span>
+            <span>网站目录</span>
+          </div>
+
+          <div class="topbar-actions">
+            <label class="search-box" for="search-input">
+              <span class="search-icon" data-icon="search"></span>
+              <input id="search-input" type="search" placeholder="搜索网站入口" autocomplete="off">
+              <kbd>Ctrl K</kbd>
+            </label>
+            <button class="button button-primary topbar-add" id="add-entry" type="button">
+              <span data-icon="plus"></span>
+              <span>添加网站</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="welcome-panel" aria-labelledby="welcome-title">
+            <div class="welcome-copy">
+              <div class="eyebrow"><span class="eyebrow-dot"></span>QUANT SYSTEM PORTAL</div>
+              <h1 id="welcome-title">量化系统导航</h1>
+              <p>集中管理并快速打开调度、数据、研究和交易相关的网站。</p>
+              <p class="welcome-instruction">先添加系统网址，再点击「打开网站」访问。</p>
+            </div>
+            <div class="portal-summary" aria-label="网站入口状态">
+              <div class="portal-summary-title">入口状态</div>
+              <div class="portal-stat">
+                <strong id="stat-total">0</strong>
+                <span>全部入口</span>
+              </div>
+              <div class="portal-stat">
+                <strong id="stat-ready">0</strong>
+                <span>可直接打开</span>
+              </div>
+              <div class="portal-stat">
+                <strong id="stat-pending">0</strong>
+                <span>待填写网址</span>
+              </div>
+              <div class="portal-summary-caption">未配置的网址可点「填写网址」补充。</div>
+            </div>
+          </section>
+
+          <section class="section-block favorites-section" aria-labelledby="favorites-title">
+            <div class="section-heading">
+              <div>
+                <div class="section-kicker">QUICK ACCESS</div>
+                <h2 id="favorites-title">常用网站 <span class="heading-count" id="favorite-count">0</span></h2>
+              </div>
+              <p class="section-hint">点亮网站卡片上的星标，可固定在这里</p>
+            </div>
+            <div class="favorites-grid" id="favorites-grid"></div>
+          </section>
+
+          <section class="section-block directory-section" aria-labelledby="directory-title">
+            <div class="section-heading directory-heading">
+              <div>
+                <div class="section-kicker">SYSTEM LINKS</div>
+                <h2 id="directory-title">全部网站 <span class="heading-count" id="entry-count">0</span></h2>
+              </div>
+              <div class="directory-meta" id="directory-meta">入口目录</div>
+            </div>
+            <div class="filter-row" id="filter-row" aria-label="筛选网站分类"></div>
+            <div class="entry-grid" id="entry-grid"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <div class="empty-icon" data-icon="search"></div>
+              <strong>没有找到匹配的网站</strong>
+              <span>试试其他关键词，或切换分类查看。</span>
+              <button class="text-button" id="clear-filters" type="button">清除筛选条件</button>
+            </div>
+          </section>
+
+          <footer class="page-footer">
+            <span>quant-nav <span class="footer-separator">·</span> 量化交易工作台</span>
+            <span>网站配置保存在当前浏览器</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="entry-dialog" id="entry-dialog" aria-labelledby="dialog-title">
+      <form id="entry-form" novalidate>
+        <div class="dialog-heading">
+          <div>
+            <div class="section-kicker">WEBSITE DIRECTORY</div>
+            <h2 id="dialog-title">添加网站</h2>
+          </div>
+          <button class="icon-button dialog-close" id="close-dialog" type="button" aria-label="关闭">
+            <span data-icon="close"></span>
+          </button>
+        </div>
+
+        <input id="entry-id" name="id" type="hidden">
+        <label class="form-field" for="entry-name">
+          <span>网站名称 <b>*</b></span>
+          <input id="entry-name" name="name" type="text" maxlength="40" placeholder="例如：调度管理器" required>
+        </label>
+        <div class="form-row">
+          <label class="form-field" for="entry-category">
+            <span>所属分类</span>
+            <input id="entry-category" name="category" type="text" maxlength="24" list="category-options" placeholder="例如：数据平台">
+            <datalist id="category-options"></datalist>
+          </label>
+          <label class="form-field" for="entry-url">
+          <span>网站网址</span>
+          <input id="entry-url" name="url" type="text" inputmode="url" placeholder="https://、localhost:端口 或 file:///D:/...">
+          </label>
+        </div>
+        <label class="form-field" for="entry-description">
+          <span>简介</span>
+          <textarea id="entry-description" name="description" maxlength="120" rows="3" placeholder="简单说明这个系统的用途"></textarea>
+        </label>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button class="button button-danger" id="delete-entry" type="button" hidden>删除网站</button>
+          <div class="dialog-actions-right">
+            <button class="button button-quiet" id="cancel-dialog" type="button">取消</button>
+            <button class="button button-primary" type="submit">保存网站</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

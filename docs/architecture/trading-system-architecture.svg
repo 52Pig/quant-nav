@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1180" viewBox="0 0 1920 1180" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">推荐驱动的量化交易系统架构</title>
+<desc id="diagram-desc">事件驱动数据平台、在线离线一致特征、多阶段候选召回与排序、组合优化、独立风控、智能执行，以及成交反馈和持续训练闭环。</desc>
+<defs>
+<marker id="flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8194A7"/></marker>
+<marker id="data" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4E8FA8"/></marker>
+<marker id="decision" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#786DB7"/></marker>
+<marker id="exec" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#C58A3E"/></marker>
+<marker id="feedback" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#338675"/></marker>
+<marker id="release" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#786DB7"/></marker>
+</defs><rect width="1920" height="1180" fill="#F4F7FB"/>
+<text x="54" y="48" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#357B78" text-anchor="start">QUANT PLATFORM  /  RECOMMENDATION-DRIVEN TRADING</text>
+<text x="54" y="93" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="32" font-weight="700" fill="#142A40" text-anchor="start">推荐驱动的量化交易系统架构</text>
+<text x="55" y="128" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="450" fill="#5F7185" text-anchor="start">事件驱动数据底座 · 多阶段推荐决策 · 独立硬风控 · 成交反馈闭环</text>
+<rect x="1257" y="48" width="177" height="30" rx="15" fill="#E8F3F6" stroke="#D0E5EB" stroke-width="1"/>
+<text x="1345.5" y="68" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#347C94" text-anchor="middle">实时特征流</text>
+<rect x="1450" y="48" width="177" height="30" rx="15" fill="#F0EEFA" stroke="#E0DCF2" stroke-width="1"/>
+<text x="1538.5" y="68" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#6E62AA" text-anchor="middle">多阶段推荐</text>
+<rect x="1643" y="48" width="225" height="30" rx="15" fill="#FBF1E2" stroke="#F0DFC3" stroke-width="1"/>
+<text x="1755.5" y="68" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#A97026" text-anchor="middle">独立风控门禁</text>
+<rect x="48" y="190" width="236" height="510" rx="18" fill="#F8FAFC" stroke="#DDE5ED" stroke-width="1.2"/>
+<rect x="310" y="190" width="366" height="510" rx="18" fill="#F4F9FB" stroke="#D5E4EB" stroke-width="1.2"/>
+<rect x="704" y="190" width="468" height="510" rx="18" fill="#F8F7FC" stroke="#E0DDF0" stroke-width="1.2"/>
+<rect x="1200" y="190" width="672" height="510" rx="18" fill="#FCF8F0" stroke="#EEDFC4" stroke-width="1.2"/>
+<rect x="48" y="744" width="1824" height="186" rx="18" fill="#F0F7F4" stroke="#D5E7DE" stroke-width="1.2"/>
+<rect x="48" y="952" width="1824" height="176" rx="18" fill="#F7F9FB" stroke="#DDE5ED" stroke-width="1.2"/>
+<circle cx="70" cy="224" r="14" fill="#5E8FA8" opacity=".13"/>
+<text x="70" y="228" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="10" font-weight="700" fill="#5E8FA8" text-anchor="middle">01</text>
+<text x="93" y="230" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#193149" text-anchor="start">数据输入</text>
+<text x="93" y="249" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#708195" text-anchor="start">质量校验 · 统一时序</text>
+<circle cx="332" cy="224" r="14" fill="#4E8FA8" opacity=".13"/>
+<text x="332" y="228" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="10" font-weight="700" fill="#4E8FA8" text-anchor="middle">02</text>
+<text x="355" y="230" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#193149" text-anchor="start">数据与特征平台</text>
+<text x="355" y="249" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#708195" text-anchor="start">Event-driven · Online / Offline parity</text>
+<circle cx="726" cy="224" r="14" fill="#786DB7" opacity=".13"/>
+<text x="726" y="228" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="10" font-weight="700" fill="#786DB7" text-anchor="middle">03</text>
+<text x="749" y="230" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#193149" text-anchor="start">推荐式交易决策</text>
+<text x="749" y="249" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#708195" text-anchor="start">召回 → 排序 → 组合重排</text>
+<circle cx="1222" cy="224" r="14" fill="#C58A3E" opacity=".13"/>
+<text x="1222" y="228" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="10" font-weight="700" fill="#C58A3E" text-anchor="middle">04</text>
+<text x="1245" y="230" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#193149" text-anchor="start">风控与交易执行</text>
+<text x="1245" y="249" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#708195" text-anchor="start">模型建议经过硬约束后才下单</text>
+<text x="70" y="777" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#1C493D" text-anchor="start">成交反馈与模型迭代</text>
+<text x="292" y="777" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#698276" text-anchor="start">事件回灌 · 账户重建 · 监控评估 · 点时回放 · 灰度发布</text>
+<text x="1848" y="777" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="500" fill="#5D7180" text-anchor="end">实线  线上链路</text>
+<text x="1848" y="795" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="500" fill="#5D7180" text-anchor="end">虚线  反馈 / 发布</text>
+<text x="70" y="985" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="650" fill="#21364A" text-anchor="start">横向治理与运行保障</text>
+<text x="1848" y="985" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#718195" text-anchor="end">贯穿数据、模型、风控与执行</text>
+<path d="M266 319 C291 319 294 428 328 428" fill="none" stroke="#8FA2B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#flow)"/>
+<path d="M266 433 C292 433 297 448 328 448" fill="none" stroke="#8FA2B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#flow)"/>
+<path d="M266 547 C291 547 296 468 328 468" fill="none" stroke="#8FA2B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#flow)"/>
+<path d="M483 448L503 448" fill="none" stroke="#4E8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#data)"/>
+<path d="M405 491L405 538" fill="none" stroke="#4E8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#data)"/>
+<path d="M580 405L580 353" fill="none" stroke="#4E8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#data)"/>
+<path d="M483 581L503 581" fill="none" stroke="#4E8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#data)"/>
+<path d="M658 313L730 313" fill="none" stroke="#4E8FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#data)"/>
+<path d="M942 356L942 376" fill="none" stroke="#786DB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#decision)"/>
+<path d="M942 460L942 478" fill="none" stroke="#786DB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#decision)"/>
+<path d="M942 562L942 580" fill="none" stroke="#786DB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#decision)"/>
+<path d="M1155 622L1212 622" fill="none" stroke="#C58A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#exec)"/>
+<path d="M1362 622L1380 622" fill="none" stroke="#C58A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#exec)"/>
+<path d="M1530 622L1548 622" fill="none" stroke="#C58A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#exec)"/>
+<path d="M1698 622L1716 622" fill="none" stroke="#C58A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#exec)"/>
+<path d="M1788 690C1788 724 214 724 214 798" fill="none" stroke="#338675" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#feedback)"/>
+<path d="M214 798L214 731L300 731L300 468L328 468" fill="none" stroke="#338675" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#feedback)"/>
+<path d="M540 798L540 716L291 716L291 547L266 547" fill="none" stroke="#338675" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#feedback)"/>
+<path d="M580 624L580 704L1222 704L1222 798" fill="none" stroke="#4E8FA8" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#data)"/>
+<path d="M1840 840L1898 840L1898 171L942 171L942 274" fill="none" stroke="#786DB7" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#release)"/>
+<rect x="66" y="280" width="200" height="78" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="67" y="294" width="4" height="50" rx="2" fill="#5E8FA8"/>
+<text x="82" y="307" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">行情与成交</text>
+<text x="82" y="328" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">tick · L2 · bar · auction</text>
+<rect x="66" y="394" width="200" height="78" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="67" y="408" width="4" height="50" rx="2" fill="#5E8FA8"/>
+<text x="82" y="421" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">基本面与事件</text>
+<text x="82" y="442" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">公告 · 财报 · 新闻 · 宏观</text>
+<rect x="66" y="508" width="200" height="78" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="67" y="522" width="4" height="50" rx="2" fill="#5E8FA8"/>
+<text x="82" y="535" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">账户 / 组合状态</text>
+<text x="82" y="556" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">持仓 · 现金 · 可用资金</text>
+<rect x="328" y="273" width="330" height="80" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="329" y="287" width="4" height="52" rx="2" fill="#4E8FA8"/>
+<text x="344" y="300" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">在线特征库</text>
+<text x="344" y="321" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">毫秒级读取 · 最新状态</text>
+<text x="344" y="337" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">Online / Offline 一致口径</text>
+<rect x="328" y="405" width="155" height="86" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="329" y="419" width="4" height="58" rx="2" fill="#4E8FA8"/>
+<text x="344" y="432" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">事件总线</text>
+<text x="344" y="453" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">Kafka / Pulsar</text>
+<text x="344" y="469" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">schema · replay</text>
+<rect x="503" y="405" width="155" height="86" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="504" y="419" width="4" height="58" rx="2" fill="#4E8FA8"/>
+<text x="519" y="432" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">实时特征计算</text>
+<text x="519" y="453" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">Flink · CDC · join</text>
+<text x="519" y="469" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">增量画像 / 更新</text>
+<rect x="328" y="538" width="155" height="86" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="329" y="552" width="4" height="58" rx="2" fill="#4E8FA8"/>
+<text x="344" y="565" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">Lakehouse</text>
+<text x="344" y="586" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">原始事件 · 历史快照</text>
+<text x="344" y="602" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">点时数据 · 可回放</text>
+<rect x="503" y="538" width="155" height="86" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="504" y="552" width="4" height="58" rx="2" fill="#4E8FA8"/>
+<text x="519" y="565" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">离线特征库</text>
+<text x="519" y="586" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">训练 / 回测 Feature View</text>
+<text x="519" y="602" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">防前视偏差</text>
+<rect x="730" y="274" width="425" height="82" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="731" y="288" width="4" height="54" rx="2" fill="#786DB7"/>
+<text x="746" y="301" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">在线决策与模型服务</text>
+<text x="746" y="322" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">低延迟推理 · 版本化策略</text>
+<text x="746" y="339" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">champion / challenger · shadow</text>
+<rect x="730" y="376" width="425" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="731" y="390" width="4" height="56" rx="2" fill="#786DB7"/>
+<text x="746" y="403" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">多路候选召回</text>
+<text x="746" y="424" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">规则池 · 因子池 · 向量近邻</text>
+<text x="746" y="441" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">资产 / 策略 Universe · 市场状态</text>
+<rect x="730" y="478" width="425" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="731" y="492" width="4" height="56" rx="2" fill="#786DB7"/>
+<text x="746" y="505" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">分层排序：粗排 → 精排</text>
+<text x="746" y="526" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">Alpha · 置信度 · 风险 · 交易成本</text>
+<text x="746" y="543" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">多目标校准 · 可解释打分</text>
+<rect x="730" y="580" width="425" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="731" y="594" width="4" height="56" rx="2" fill="#786DB7"/>
+<text x="746" y="607" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">组合级重排 / 受约束优化</text>
+<text x="746" y="628" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">目标仓位 · 风险预算 · 分散度</text>
+<text x="746" y="645" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="450" fill="#5D7083" text-anchor="start">流动性 · 换手 · 成本约束</text>
+<rect x="1212" y="558" width="150" height="132" rx="12" fill="#FFFFFF" stroke="#E7D3B5" stroke-width="1.2"/>
+<rect x="1213" y="572" width="4" height="104" rx="2" fill="#C58A3E"/>
+<text x="1228" y="585" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="650" fill="#183047" text-anchor="start">独立风控闸门</text>
+<text x="1228" y="606" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">限额 / 敞口 / 集中度</text>
+<text x="1228" y="622" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">价格保护 / 熔断</text>
+<rect x="1224" y="662" width="128" height="19" rx="9" fill="#FBF2E4" stroke="#F0DFC3" stroke-width="1"/>
+<text x="1288" y="675" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="9" font-weight="650" fill="#9A692A" text-anchor="middle">PASS · CLIP · REJECT</text>
+<rect x="1380" y="558" width="150" height="132" rx="12" fill="#FFFFFF" stroke="#E7D3B5" stroke-width="1.2"/>
+<rect x="1381" y="572" width="4" height="104" rx="2" fill="#C58A3E"/>
+<text x="1396" y="585" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">OMS / EMS</text>
+<text x="1396" y="606" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">订单状态机 · 幂等</text>
+<text x="1396" y="623" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">撤改单 · 路由</text>
+<rect x="1548" y="558" width="150" height="132" rx="12" fill="#FFFFFF" stroke="#E7D3B5" stroke-width="1.2"/>
+<rect x="1549" y="572" width="4" height="104" rx="2" fill="#C58A3E"/>
+<text x="1564" y="585" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">执行算法</text>
+<text x="1564" y="606" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">TWAP · VWAP · POV</text>
+<text x="1564" y="623" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">流动性感知 · 滑点</text>
+<rect x="1716" y="558" width="144" height="132" rx="12" fill="#FFFFFF" stroke="#E7D3B5" stroke-width="1.2"/>
+<rect x="1717" y="572" width="4" height="104" rx="2" fill="#C58A3E"/>
+<text x="1732" y="585" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="650" fill="#183047" text-anchor="start">券商 / 交易所</text>
+<text x="1732" y="606" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">订单确认 · 成交</text>
+<text x="1732" y="623" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">拒单 · 回报</text>
+<rect x="66" y="798" width="296" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="67" y="812" width="4" height="56" rx="2" fill="#338675"/>
+<text x="82" y="825" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">成交与订单事件</text>
+<text x="82" y="846" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">fills · rejects · latency</text>
+<rect x="391" y="798" width="296" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="392" y="812" width="4" height="56" rx="2" fill="#338675"/>
+<text x="407" y="825" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">账本与持仓重建</text>
+<text x="407" y="846" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">positions · cash · reconciliation</text>
+<rect x="716" y="798" width="296" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="717" y="812" width="4" height="56" rx="2" fill="#338675"/>
+<text x="732" y="825" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">在线监控与告警</text>
+<text x="732" y="846" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">PnL · slippage · drift · SLO</text>
+<rect x="1041" y="798" width="365" height="84" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="1042" y="812" width="4" height="56" rx="2" fill="#338675"/>
+<text x="1057" y="825" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">离线评估与训练</text>
+<text x="1057" y="846" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">PIT replay · walk-forward</text>
+<text x="1057" y="862" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">cost-aware backtest · promotion</text>
+<rect x="1434" y="798" width="406" height="84" rx="12" fill="#FFFFFF" stroke="#DDD8EF" stroke-width="1.2"/>
+<rect x="1435" y="812" width="4" height="56" rx="2" fill="#786DB7"/>
+<text x="1450" y="825" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="650" fill="#183047" text-anchor="start">模型注册与灰度发布</text>
+<text x="1450" y="846" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">lineage · shadow · canary</text>
+<text x="1450" y="862" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">rollback · approval</text>
+<path d="M362 840L391 840" fill="none" stroke="#338675" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#feedback)"/>
+<path d="M687 840L716 840" fill="none" stroke="#338675" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#feedback)"/>
+<path d="M1012 840L1041 840" fill="none" stroke="#338675" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#feedback)"/>
+<path d="M1406 840L1434 840" fill="none" stroke="#338675" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#feedback)"/>
+<rect x="66" y="1009" width="560" height="91" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="67" y="1023" width="4" height="63" rx="2" fill="#5E8FA8"/>
+<text x="82" y="1036" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">可观测性与运行 SLO</text>
+<text x="82" y="1057" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">trace · data freshness · p99 latency</text>
+<text x="82" y="1073" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">slippage / PnL · drift · alerting</text>
+<rect x="652" y="1009" width="560" height="91" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="653" y="1023" width="4" height="63" rx="2" fill="#786DB7"/>
+<text x="668" y="1036" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">数据与模型治理</text>
+<text x="668" y="1057" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">feature lineage · point-in-time correctness</text>
+<text x="668" y="1073" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">versioned approval · audit · replay</text>
+<rect x="1238" y="1009" width="602" height="91" rx="12" fill="#FFFFFF" stroke="#D6E0E8" stroke-width="1.2"/>
+<rect x="1239" y="1023" width="4" height="63" rx="2" fill="#338675"/>
+<text x="1254" y="1036" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="650" fill="#183047" text-anchor="start">韧性与安全控制</text>
+<text x="1254" y="1057" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">idempotency · replay · circuit breaker</text>
+<text x="1254" y="1073" font-family="Inter, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="450" fill="#5D7083" text-anchor="start">least privilege · kill switch · failover</text>
+</svg>
